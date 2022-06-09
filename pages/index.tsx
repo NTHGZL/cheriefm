@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
-  const [deferredPrompt, setDeferredPrompt] = useState()
+  const [deferredPrompt, setDeferredPrompt] = useState<any>()
 
   useEffect(()=> {
     if("serviceWorker" in navigator) {
@@ -40,13 +40,12 @@ export default function Home() {
         <div className='banner-add'>
         <button className='add-icon-button' onClick={ async(e)=> {
           
-          deferredPrompt.prompt()
           if (deferredPrompt !== null) {
-            // deferredPrompt!.prompt();
-            // const { outcome } = await deferredPrompt.userChoice;
-            // if (outcome === 'accepted') {
-                // deferredPrompt = null;
-            // }
+             deferredPrompt!.prompt();
+             const { outcome } = await deferredPrompt.userChoice;
+             if (outcome === 'accepted') {
+                 setDeferredPrompt(null);
+             }
         }
         }}>
           <img className='add-icon' src='/install-icon.png' /> Installer
