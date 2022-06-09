@@ -5,14 +5,56 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
+.body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .header{
-  background-color: brown;
+  background-color: #D7263D;
   height: 10vh;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   color: white;
+}
+.left-bar{
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+}
+.right-bar{
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+}
+.player-container>.player-icon-background{
+  background-color: white;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+}
+.player-container{
+  width: 70%;
+ height: 100%;
+  display: flex;
+  flex-direction: row;
+  background-color: #8d1a29;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.search-logo{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
 }
 .banner-add{
   position: absolute;
@@ -47,4 +89,71 @@ body {
 }
 .add-icon{
   width: 30px;
+}
+div.current>h2{
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+div.current>h2>div.curveBorder{
+  width: 70%;
+  margin-top: 10px;
+  border-bottom: 5px solid #D7263D;
+  border-radius: 10px;
+}
+.current{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.talks{
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.img-talks{
+  background-color: black;
+  width: 90%;
+  height: 200px;
+}
+.talk-name{
+  font-size: 25px;
+  letter-spacing: 2px;
+  font-weight: 700;
+}
+.progress-container{
+  border: 3px solid #D7263D;
+  height: 20px;
+  width: 80%;
+  border-radius: 20px;
+  padding-left: 2px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  
+}
+.progress {
+  width: 70%;
+  height: 70%;
+  background-color: #D7263D;
+  border-radius: 20px;
+}
+
+.listen-button{
+  all: unset;
+  margin-top: 10px;
+  background-color: #D7263D;
+  color: white;
+  font-weight: 700;
+  letter-spacing: 1px;
+  font-size: 25px;
+  padding: 5px 60px;
+  border-radius: 50px;
 }
