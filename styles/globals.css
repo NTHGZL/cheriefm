@@ -5,7 +5,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
-header{
+.header{
   background-color: brown;
   height: 10vh;
   display: flex;
@@ -14,17 +14,27 @@ header{
   justify-content: space-around;
   color: white;
 }
+.banner-add{
+  position: absolute;
+  background-color: blue;
+  box-sizing: border-box;
+ width: 100%;
+  left: 0;
+  height: 150px;
+ 
+  bottom: 0;
+}
 .add-icon-button{
   all: unset;
-  position: absolute;
+
   bottom: 0;
   right: 0;
   margin: 20px;
-  height: 50px;
-  width: 50px;
+  height: 30px;
+  padding: 0 20px;
   border-radius: 25px;
   color: white;
-  font-size: 40px;
+  font-size: 20px;
   background-color: rgba(83, 0, 0, 0.808);
   display: flex;
   justify-content: center;
