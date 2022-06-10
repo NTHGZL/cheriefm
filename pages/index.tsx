@@ -1,12 +1,17 @@
 import { useEffect, useState } from 'react'
 import styles from '../styles/Home.module.css'
-
+const audio = new Audio('http://scdn.nrjaudio.fm/adwz2/fr/30201/mp3_128.mp3?origine=fluxradios')
 export default function Home() {
   const [deferredPrompt, setDeferredPrompt] = useState<any>()
   const [isIntalled, setInstalledStatus] = useState(false)
   const [isClosed, setClosed] = useState(false)
+  const [isMozilla, setIsMozila] = useState(false)
+  const [isPlaying, setIsPlaying] = useState(false)
   useEffect(()=> {
+    setIsMozila(navigator.userAgent.includes('Mozilla'))
+    console.log(navigator.appCodeName)
     if("serviceWorker" in navigator) {
+      console.log('coucou sw')
       window.addEventListener("load", function () {
        navigator.serviceWorker.register("/sw.js").then(
           function (registration) {
@@ -38,14 +43,28 @@ export default function Home() {
           <img src='/icon.png' width={'70px'} />
         </div>
         <div className='right-bar'>
-        <div className='player-container'>
+        <div className='player-container' onClick={()=>{
+          // play distant audio with link
+          
+
+          if (isPlaying) {
+            audio.pause()
+            setIsPlaying(false)
+          } else {
+            audio.play()
+            setIsPlaying(true)
+          }
+
+
+          
+        }}>
           <div className='player-icon-background'>
-            <img src='/icon-play.svg' />
+            <img src={isPlaying ? 'pause.png' : '/icon-play.svg'} />
           </div>
           Le direct
         </div>
         <div className='search-logo'>
-          <img src="icon-search.svg" width={'30px'}/>
+          <img src="icon-user.svg" width={'30px'}/>
         </div>
         </div>
       </div>
@@ -74,12 +93,39 @@ export default function Home() {
             </button>
           </div>
         </div>
-        {!isIntalled ? (
+        <nav>
+          <div className='nav-item'>
+            <img src='icon-home.svg' width={'30px'}/>
+            <div className='nav-item-text'>
+              Accueil
+            </div> 
+          </div>
+          <div className='nav-item'>
+            <img src='icon-book.svg' width={'30px'}/>
+            <div className='nav-item-text'>
+              Bibliothèque
+            </div>
+          </div>
+          <div className='nav-item'>
+            <img src='/icon-search.svg' width={'30px'}/>
+            <div className='nav-item-text'>
+              Rechercher
+            </div> 
+          </div>
+          <div className='nav-item'>
+            <img src='/icon-tchat.svg' width={'30px'}/>
+            <div className='nav-item-text'>
+              Tchat
+            </div>
+          </div>
+
+        </nav>
+        {isIntalled ? (
           <div className='banner-add'>
           
           <button className='add-icon-button' onClick={ async(e)=> {
             
-            if (deferredPrompt !== null) {
+            if (deferredPrompt !== undefined) {
                deferredPrompt!.prompt();
                const { outcome } = await deferredPrompt.userChoice;
                if (outcome === 'accepted') {
