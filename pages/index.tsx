@@ -1,13 +1,15 @@
 import { useEffect, useState } from 'react'
 import styles from '../styles/Home.module.css'
-const audio = new Audio('http://scdn.nrjaudio.fm/adwz2/fr/30201/mp3_128.mp3?origine=fluxradios')
+
 export default function Home() {
   const [deferredPrompt, setDeferredPrompt] = useState<any>()
   const [isIntalled, setInstalledStatus] = useState(false)
   const [isClosed, setClosed] = useState(false)
   const [isMozilla, setIsMozila] = useState(false)
   const [isPlaying, setIsPlaying] = useState(false)
+  const [audio, setAudio] = useState<HTMLAudioElement>()
   useEffect(()=> {
+    setAudio(new Audio('http://scdn.nrjaudio.fm/adwz2/fr/30201/mp3_128.mp3?origine=fluxradios'))
     setIsMozila(navigator.userAgent.includes('Mozilla'))
     console.log(navigator.appCodeName)
     if("serviceWorker" in navigator) {
