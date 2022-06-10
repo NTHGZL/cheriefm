@@ -50,10 +50,10 @@ export default function Home() {
           
 
           if (isPlaying) {
-            audio.pause()
+            audio!.pause()
             setIsPlaying(false)
           } else {
-            audio.play()
+            audio!.play()
             setIsPlaying(true)
           }
 
