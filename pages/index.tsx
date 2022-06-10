@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
-import styles from '../styles/Home.module.css'
+
 
 export default function Home() {
   const [deferredPrompt, setDeferredPrompt] = useState<any>()
-  const [isIntalled, setInstalledStatus] = useState(false)
+  const [isOpen, setOpen] = useState(true)
   const [isClosed, setClosed] = useState(false)
   const [isMozilla, setIsMozila] = useState(false)
   const [isPlaying, setIsPlaying] = useState(false)
@@ -70,7 +70,7 @@ export default function Home() {
         </div>
         </div>
       </div>
-      <div className='body'>
+      <div className='body' style={{filter: isOpen ? 'blur(10px)': ''}}>
         <div className='current'>
           <h2>
             En cours
@@ -92,6 +92,33 @@ export default function Home() {
             </div>
             <button className='listen-button'>
               Écouter
+            </button>
+          </div>
+        </div>
+        <div className='current'>
+          <h2>
+            Prochaines émissions
+            <div className='curveBorder'></div>
+          </h2>
+          <div className='talks'>
+            <div className='img-talks-div'>
+              <img src='/emission 1.png'/>
+            </div>
+            <div className='talk-name'>
+              Star Chérie
+            </div>
+            <div className='progress-container'>
+              <div className='progress'>
+              </div>
+            </div>
+            <div className=''>
+              Fin dans 37 min
+            </div>
+            <button className='share-button'>
+              <div className='bell-icon'>
+                <img src='/icon-bell.svg'/>
+              </div>
+              Me prévenir
             </button>
           </div>
         </div>
@@ -122,16 +149,23 @@ export default function Home() {
           </div>
 
         </nav>
-        {isIntalled ? (
+      </div>
+      {isOpen ? (
           <div className='banner-add'>
-          
+            
+            <div className='banner-add-text'>
+            <div className='close-banner' onClick={()=>{setOpen(false)}}>
+              Fermer
+            </div>
+            Pour une meilleure expérience de navigation, nous vous conseillons d'installer l'application.
+            </div>
           <button className='add-icon-button' onClick={ async(e)=> {
             
             if (deferredPrompt !== undefined) {
                deferredPrompt!.prompt();
                const { outcome } = await deferredPrompt.userChoice;
                if (outcome === 'accepted') {
-                  setInstalledStatus(true)
+                  setOpen(false)
                    setDeferredPrompt(null);
                }
           }
@@ -140,9 +174,6 @@ export default function Home() {
           </button>
           </div>
         ) : ''}
-        
-        
-      </div>
     </>
   )
 }

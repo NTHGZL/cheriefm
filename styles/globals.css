@@ -12,7 +12,8 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 10vh 0;
+  padding-top: 10vh;
+  padding-bottom: 15vh;
 }
 .header{
   position: fixed;
@@ -69,11 +70,20 @@ body {
   position: absolute;
   background-color: white;
   box-sizing: border-box;
+  padding: 10px;
  width: 100%;
   left: 0;
   height: 100px;
  border-top: 1px solid #e3e3e3;
-  bottom: 0;
+  bottom: 50%;
+  box-shadow: 0px -3px 20px -8px #000000;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.banner-add-text{
+  font-size: 12px;
 }
 .add-icon-button{
   all: unset;
@@ -81,16 +91,16 @@ body {
   bottom: 0;
   right: 0;
   margin: 20px;
-  height: 30px;
-  padding: 0 20px;
-  border-radius: 25px;
+  height: 40px;
+  padding: 0 15px;
+  font-size: 12px;
+  border-radius: 2px;
   color: white;
-  font-size: 20px;
-  background-color: rgba(83, 0, 0, 0.808);
+  background-color: #D7263D;
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.4);
   cursor: pointer;
 }
 .add-icon-button:hover{
@@ -189,4 +199,45 @@ nav{
   
   height: 100%;
   width: 100%;
+}
+.modal{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 90%;
+  height: 200%;
+  background-color: rgba(0,0,0,0.5);
+}
+.close-banner{
+  color: blue;
+  text-decoration: underline;
+  margin-bottom: 20px;
+  position: absolute;
+  top: 0;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.share-button{
+
+  all: unset;
+  margin: 15px 0;
+  border: 3px solid black;
+  font-weight: 700;
+  font-size: 20px;
+  border-radius: 50px;
+  display: flex;
+  flex-direction: row;
+  height: 30px;
+  width: 200px;
+}
+.bell-icon{
+  background-color: black;
+  border-radius: 50px;
+  height: 100%;
+  width: 30px;
+  margin-right: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
