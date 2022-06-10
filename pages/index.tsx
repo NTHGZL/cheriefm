@@ -8,9 +8,16 @@ export default function Home() {
   const [isMozilla, setIsMozila] = useState(false)
   const [isPlaying, setIsPlaying] = useState(false)
   const [audio, setAudio] = useState<HTMLAudioElement>()
+  const [isPwa, setIsPwa] = useState(false)
   useEffect(()=> {
     setAudio(new Audio('http://scdn.nrjaudio.fm/adwz2/fr/30201/mp3_128.mp3?origine=fluxradios'))
     setIsMozila(navigator.userAgent.includes('Mozilla'))
+
+    // set the isPwa state to true if the user is on a PWA
+    if (window.matchMedia('(display-mode: standalone)').matches) {
+      setIsPwa(true)
+    }
+
     console.log(navigator.appCodeName)
     if("serviceWorker" in navigator) {
       console.log('coucou sw')
@@ -70,7 +77,7 @@ export default function Home() {
         </div>
         </div>
       </div>
-      <div className='body' style={{filter: isOpen ? 'blur(10px)': ''}}>
+      <div className='body' style={{filter: isOpen && !isPwa ? 'blur(10px)': ''}}>
         <div className='current'>
           <h2>
             En cours
@@ -150,7 +157,7 @@ export default function Home() {
 
         </nav>
       </div>
-      {isOpen ? (
+      {isOpen && !isPwa ? (
           <div className='banner-add'>
             
             <div className='banner-add-text'>
