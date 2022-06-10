@@ -10,7 +10,7 @@ export default function Home() {
   const [audio, setAudio] = useState<HTMLAudioElement>()
   const [isPwa, setIsPwa] = useState(false)
   useEffect(()=> {
-    setAudio(new Audio('http://scdn.nrjaudio.fm/adwz2/fr/30201/mp3_128.mp3?origine=fluxradios'))
+    setAudio(new Audio('https://scdn.nrjaudio.fm/adwz2/fr/30201/mp3_128.mp3?origine=fluxradios'))
     setIsMozila(navigator.userAgent.includes('Mozilla'))
 
     // set the isPwa state to true if the user is on a PWA
